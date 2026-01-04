@@ -1,5 +1,5 @@
-- name: "{{ mongodb }} catalogue"
+- name: "{{ component }} catalogue"
   become: yes
-  hosts: "{{ catalogue }}"
+  hosts: "{{ component }}"
   roles:
-  - "{{ mongodb }}"
+  - "{{ component }}"
