@@ -1,9 +1,9 @@
-- name: nodejs
+- name: nodejs setup
   include role:
    name: common
    tasks_from: nodejs
 
-- name: app_setup
+- name: app setup 
   include role:
    name: common
    tasks_from: app_setup
