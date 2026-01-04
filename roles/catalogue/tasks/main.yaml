@@ -42,7 +42,7 @@
    name: common
    tasks_from: systemd.yaml
 
-- name: Deployment
+- name: Deployment process
   tags:
   - deployment
   include_role:
