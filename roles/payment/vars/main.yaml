@@ -1,0 +1,5 @@
+CART_HOST: cart.rojahanumantharaju.site
+USER_HOST: user.rojahanumantharaju.site
+RABBITMQ_HOST: rabbitmq.rojahanumantharaju.site
+RABBITMQ_USER: roboshop
+RABBITMQ_PASSWORD: roboshop123
