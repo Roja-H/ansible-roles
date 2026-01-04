@@ -1,0 +1,37 @@
+- name: nodejs
+  include role:
+   name: common
+   tasks_from: nodejs
+
+- name: app_setup
+  include role:
+   name: common
+   tasks_from: app_setup
+
+- name: systemd setup
+  include role:
+   name: common
+   tasks_from: systemd
+
+
+- name: copy mongo repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: installing client software
+  ansible.builtin.dnf:
+    name: mongodb-mongosh
+    state: present
+
+- name: check products loaded or not if catalogue db exits or not
+  ansible.builtin.command: mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+  register: catalogue_output
+
+- name: print catalogue_output
+  ansible.builtin.debug:
+    msg: "{{ catalogue_output }}"
+
+- name: load products if catalogue db doesnot exists
+  ansible.builtin.shell: mongosh --host mongodb.daws84s.site < /app/db/master-data.js
+  when: catalogue_output.stdout | int < 0
