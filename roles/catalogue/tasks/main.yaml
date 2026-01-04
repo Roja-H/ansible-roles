@@ -30,12 +30,12 @@
   ansible.builtin.shell: mongosh --host mongodb.rojahanumantharaju.site < /app/db/master-data.js
   when: catalogue_output.stdout | int < 0
 
-# this tasks used to show the error handling just ignore this while exceuting catalogue
-- name: load products if catalogue db doesnot exists
-  ansible.builtin.shell: mongosh --host mongodb.rojahanumantharaju.site < /app/db/master-data.js
-  when: catalogue_output.stdout | int < 0  
-  ignore_errors: true # if we already know at this stage it is going to fail just use ignore error/unreachable soo task will not exit here it just skips
-  ignore_unrechable: true
+# # this tasks used to show the error handling just ignore this while exceuting catalogue
+# - name: load products if catalogue db doesnot exists
+#   ansible.builtin.shell: mongosh --host mongodb.rojahanumantharaju.site < /app/db/master-data.js
+#   when: catalogue_output.stdout | int < 0  
+#   ignore_errors: true # if we already know at this stage it is going to fail just use ignore error/unreachable soo task will not exit here it just skips
+#   ignore_unrechable: true
 
 - name: systemd setup
   include_role:
